@@ -14,7 +14,7 @@ namespace CM3036_Coursework___Kolesov1308140
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
 
         private readonly StudentEntities _studentEntities = new StudentEntities();

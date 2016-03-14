@@ -123,13 +123,9 @@ C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Course
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csproj.GenerateResource.Cache
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.exe
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.pdb
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\WPFToolkit.dll
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csprojResolveAssemblyReference.cache
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\Themes\Metro\Metro.MSControls.Core.Implicit.baml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\Themes\Metro\Metro.MSControls.Toolkit.Implicit.baml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\Themes\Metro\Styles.Shared.baml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\Themes\Metro\Styles.WPF.baml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\Themes\Metro\Theme.Colors.baml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.dll
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.pdb
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.xml
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.baml

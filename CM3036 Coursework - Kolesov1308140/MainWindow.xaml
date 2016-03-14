@@ -1,14 +1,20 @@
-﻿<Window x:Name="CM3036GradeManagementSystem" x:Class="CM3036_Coursework___Kolesov1308140.MainWindow"
+﻿<Controls:MetroWindow x:Name="CM3036GradeManagementSystem" x:Class="CM3036_Coursework___Kolesov1308140.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CM3036_Coursework___Kolesov1308140"
         Icon="RGU Logo.ico"
         mc:Ignorable="d"
-        Title="CM3036 - Grade Management System" Height="492" Width="682" MinHeight="492" MinWidth="682" WindowStartupLocation="CenterScreen">
-    <TabControl x:Name="TabControl"  Margin="-1,10,-1,-1" Padding="0">
-        <TabItem Header="Students - Main Window" Margin="2,-2,-2,-1">
+        ShowIconOnTitleBar="False"
+        BorderThickness="0" 
+        GlowBrush="Black"
+        ResizeMode="CanResizeWithGrip"
+        WindowTransitionsEnabled="False"
+        Title="CM3036 - Grade Management System" Height="510" Width="670" MinHeight="510" MinWidth="670" WindowStartupLocation="CenterScreen">
+    <TabControl x:Name="TabControl" Margin="-1,10,-1,-1" Padding="0">
+        <TabItem Header="Students - Main Window" Margin="15,0,-17,5">
             <Grid Margin="10,0,-1,-1" VerticalAlignment="Top">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="265"/>
@@ -21,7 +27,7 @@
 
                 <GroupBox Header="Students" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="0" Height="242" HorizontalAlignment="Left" Width="306">
                     <Grid>
-                        <Label Content="Matriculation number - Full Name" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Top" Height="26" Width="210" />
+                        <Label Content="Matriculation number - Full Name" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Height="26" Width="210" />
                         <ListBox x:Name="StudentsListBox" ItemsSource="{Binding}" Height="180" Margin="10,26,10,0" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" />
                     </Grid>
                 </GroupBox>
@@ -62,7 +68,7 @@
             </Grid>
 
         </TabItem>
-        <TabItem Header="Log">
+        <TabItem Header="Log" Margin="21,0,-22,0">
             <Grid />
         </TabItem>
     </TabControl>
@@ -70,4 +76,4 @@
 
     <!--</Grid>-->
 
-</Window>
+</Controls:MetroWindow>
