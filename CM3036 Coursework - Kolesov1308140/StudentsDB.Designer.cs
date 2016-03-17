@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'H:\Desktop\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\StudentsDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\StudentsDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

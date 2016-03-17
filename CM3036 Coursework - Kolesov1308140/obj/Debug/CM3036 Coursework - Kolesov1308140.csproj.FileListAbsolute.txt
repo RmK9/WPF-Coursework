@@ -129,3 +129,5 @@ C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Course
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.pdb
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.xml
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.baml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.g.cs
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.baml

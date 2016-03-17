@@ -96,7 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="InputValidator.cs" />
+    <Compile Include="AddANewStudentWindow.xaml.cs">
+      <DependentUpon>AddANewStudentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InputValidationHelper.cs" />
     <Compile Include="KeyToCharCaster.cs" />
     <Compile Include="Student.cs">
       <DependentUpon>StudentsDB.tt</DependentUpon>
@@ -116,6 +119,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentsDB.edmx</DependentUpon>
     </Compile>
+    <Page Include="AddANewStudentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

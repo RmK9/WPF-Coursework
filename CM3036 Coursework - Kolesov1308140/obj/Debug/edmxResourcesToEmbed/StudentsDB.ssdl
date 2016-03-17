@@ -2,14 +2,16 @@
 <Schema Namespace="StudentsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Students">
     <Key>
-      <PropertyRef Name="matriculationNumber" />
+      <PropertyRef Name="studentId" />
     </Key>
+    <Property Name="studentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="matriculationNumber" Type="int" Nullable="false" />
     <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="componentOne" Type="char" MaxLength="3" Nullable="false" />
     <Property Name="componentTwo" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="componentThree" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="nonSubmission" Type="bit" Nullable="false" />
     <Property Name="finalGrade" Type="char" MaxLength="1" Nullable="false" />
   </EntityType>
   <EntityContainer Name="StudentsDBModelStoreContainer">

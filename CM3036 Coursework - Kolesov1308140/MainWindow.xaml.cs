@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Core;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace CM3036_Coursework___Kolesov1308140
 {
@@ -25,66 +21,7 @@ namespace CM3036_Coursework___Kolesov1308140
 
             BindListBoxData();
 
-            AttachTextBoxInputEventHandlers();
-        }
-
-        public List<Student> GetStudentList()
-        {
-            try
-            {
-                //Force open the connection
-                _studentEntities.Database.Connection.Open();
-                
-                //Gets the student list from DB in a reverse order to keep the records
-                //in the same order as in DB and keep oldest records at top
-                return _studentEntities.Students.AsEnumerable().Reverse().ToList();
-            }
-            catch (EntityException ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to get Students from Database\nError Message: " + ex.Message +
-                                "\nPlease try to run the application again.");
-                return new List<Student>();
-            }
-            catch (TimeoutException ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to get Students from Database\nError Message: " + ex.Message +
-                                "\nPlease try to run the application again.");
-                return new List<Student>();
-            }
-            finally
-            {
-                //Close the connection
-                _studentEntities.Database.Connection.Close();
-            }
-        }
-
-        public void SaveStudentChanges(Student changedStudent, int matricNumber)
-        {
-            try
-            {
-                //Force open the connection
-                _studentEntities.Database.Connection.Open();
-                //_studentEntities.Students.wh
-            }
-            catch (EntityException ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to get Students from Database\nError Message: " + ex.Message +
-                                "\nPlease try to run the application again.");
-            }
-            catch (TimeoutException ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to get Students from Database\nError Message: " + ex.Message +
-                                "\nPlease try to run the application again.");
-            }
-            finally
-            {
-                //Close the connection
-                _studentEntities.Database.Connection.Close();
-            }
+            InputValidationHelper.AttachTextBoxInputEventHandlers(this);
         }
 
         public void BindListBoxData()
@@ -93,44 +30,26 @@ namespace CM3036_Coursework___Kolesov1308140
             StudentsListBox.ItemsSource = GetStudentList();
         }
 
-        private string CalculateFinalGrade(Student student)
+        public List<Student> GetStudentList()
         {
-            var finalGrade = "";
-
-
-
-            return finalGrade;
+            try
+            {
+                //Gets the student list from DB in a reverse order to keep the records
+                //in the same order as in DB and keep oldest records at top
+                return _studentEntities.Students.AsEnumerable().Reverse().ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Error while trying to get Students from Database\nError Message: " + ex.Message +
+                                "\nPlease try again.");
+                return new List<Student>();
+            }
         }
 
         private Student GetSelectedStudent()
         {
             return StudentsListBox.SelectedItem as Student;
-        }
-
-        private void AttachTextBoxInputEventHandlers()
-        {
-            foreach (TextBox tb in FindLogicalChildren<TextBox>(this))
-            {
-                var textBoxType = tb.Name.Substring(tb.Name.Length - 1);
-                switch (textBoxType)
-                {
-                    case "N" :
-                        tb.PreviewKeyDown += InputValidator.AllowOnlyNumbers_OnKeyDown;
-                        tb.TextChanged += InputValidator.AllowOnlyNumbers_TextChanged;
-                        DataObject.AddPastingHandler(tb, InputValidator.AllowOnlyNumbers_PasteHandler);
-                        break;
-                    case "S" :
-                        tb.PreviewKeyDown += InputValidator.AllowOnlyAlphabeticalChars_OnKeyDown;
-                        tb.TextChanged += InputValidator.AllowOnlyAlphabeticalChars_TextChanged;
-                        DataObject.AddPastingHandler(tb, InputValidator.AllowOnlyAlphabeticalChars_PasteHandler);
-                        break;
-                    case "G" :
-                        tb.PreviewKeyDown += InputValidator.AllowOnlyGradeLetters_OnKeyDown;
-                        tb.TextChanged += InputValidator.AllowOnlyGradeLetters_TextChanged;
-                        DataObject.AddPastingHandler(tb, InputValidator.AllowOnlyGradeLetters_PasteHandler);
-                        break;
-                }
-            }
         }
 
         private void ApplyChangesButton_OnClick(object sender, RoutedEventArgs e)
@@ -156,28 +75,56 @@ namespace CM3036_Coursework___Kolesov1308140
             BindListBoxData();
         }
 
-        public static IEnumerable<T> FindLogicalChildren<T>(DependencyObject depObj) where T : DependencyObject
+        public void DeleteSelectedStudentButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (depObj == null) yield break;
-
-            foreach (DependencyObject child in LogicalTreeHelper.GetChildren(depObj).OfType<DependencyObject>())
+            try
             {
-                if (child is T)
-                {
-                    yield return (T)child;
-                }
+                var selectedStudent = GetSelectedStudent();
 
-                foreach (T childOfChild in FindLogicalChildren<T>(child))
-                {
-                    yield return childOfChild;
-                }
+                //Early exit (do nothing) if no student selected
+                if (selectedStudent == null) return;
+
+                _studentEntities.Students.Remove(selectedStudent);
+                _studentEntities.SaveChanges();
+
+                //Refresh ListBox data
+                BindListBoxData();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Error while trying remove the Student from Database\nError Message: " + ex.Message +
+                                "\nPlease try again.");
             }
         }
 
         private void AddNewStudentButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var popup = new Window();
-            popup.ShowDialog();
+            var addNewStudentWindow = new AddANewStudentWindow { Owner = this };
+            addNewStudentWindow.ShowDialog();
+        }
+
+        private IEnumerable<TextBox> GetGradeTextBoxes()
+        {
+            return InputValidationHelper.FindLogicalChildren<TextBox>(this).Where(c => c.Name.EndsWith("G"));
+        }
+
+        private void NonSubmissionCheckBox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            foreach (var tb in GetGradeTextBoxes())
+            {
+                tb.IsEnabled = false;
+            }
+
+        }
+
+        private void NonSubmissionCheckBox_UnChecked(object sender, RoutedEventArgs e)
+        {
+            foreach (var tb in GetGradeTextBoxes())
+            {
+                tb.IsEnabled = true;
+            }
+
         }
     }
 }

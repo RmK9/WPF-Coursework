@@ -4,42 +4,45 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StudentsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="StudentsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Students">
           <Key>
-            <PropertyRef Name="matriculationNumber" />
+            <PropertyRef Name="studentId" />
           </Key>
+          <Property Name="studentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="matriculationNumber" Type="int" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="componentOne" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="componentTwo" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="componentThree" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="nonSubmission" Type="bit" Nullable="false" />
           <Property Name="finalGrade" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityContainer Name="StudentsDBModelStoreContainer">
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StudentsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StudentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Students" EntityType="StudentsDBModel.Student" />
+        </EntityContainer>
         <EntityType Name="Student">
           <Key>
-            <PropertyRef Name="matriculationNumber" />
+            <PropertyRef Name="studentId" />
           </Key>
+          <Property Name="studentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="matriculationNumber" Type="Int32" Nullable="false" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="componentOne" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="componentTwo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="componentThree" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="finalGrade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="componentOne" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="componentTwo" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="componentThree" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="nonSubmission" Type="Boolean" Nullable="false" />
+          <Property Name="finalGrade" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="StudentEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Students" EntityType="Self.Student" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -49,13 +52,15 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="StudentsDBModel.Student">
               <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="matriculationNumber" ColumnName="matriculationNumber" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="componentOne" ColumnName="componentOne" />
-                <ScalarProperty Name="componentTwo" ColumnName="componentTwo" />
-                <ScalarProperty Name="componentThree" ColumnName="componentThree" />
                 <ScalarProperty Name="finalGrade" ColumnName="finalGrade" />
+                <ScalarProperty Name="nonSubmission" ColumnName="nonSubmission" />
+                <ScalarProperty Name="componentThree" ColumnName="componentThree" />
+                <ScalarProperty Name="componentTwo" ColumnName="componentTwo" />
+                <ScalarProperty Name="componentOne" ColumnName="componentOne" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="matriculationNumber" ColumnName="matriculationNumber" />
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

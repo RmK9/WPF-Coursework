@@ -4,13 +4,15 @@
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="StudentsDBModel.Student">
         <MappingFragment StoreEntitySet="Students">
-          <ScalarProperty Name="matriculationNumber" ColumnName="matriculationNumber" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="componentOne" ColumnName="componentOne" />
-          <ScalarProperty Name="componentTwo" ColumnName="componentTwo" />
-          <ScalarProperty Name="componentThree" ColumnName="componentThree" />
           <ScalarProperty Name="finalGrade" ColumnName="finalGrade" />
+          <ScalarProperty Name="nonSubmission" ColumnName="nonSubmission" />
+          <ScalarProperty Name="componentThree" ColumnName="componentThree" />
+          <ScalarProperty Name="componentTwo" ColumnName="componentTwo" />
+          <ScalarProperty Name="componentOne" ColumnName="componentOne" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="matriculationNumber" ColumnName="matriculationNumber" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

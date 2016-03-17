@@ -1,0 +1,46 @@
+﻿<Controls:MetroWindow x:Name="AddANewStudent" x:Class="CM3036_Coursework___Kolesov1308140.AddANewStudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:CM3036_Coursework___Kolesov1308140"
+        Icon="RGU Logo.ico"
+        mc:Ignorable="d"
+        ShowIconOnTitleBar="False"
+        BorderThickness="0" 
+        GlowBrush="Black"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        Title="Add a new Student" Height="510" Width="285" WindowStartupLocation="CenterScreen" IsWindowDraggable="False">
+    <Grid>
+        <Label Content="Matriculation Number" Margin="42,15,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="169"/>
+        <TextBox x:Name="MatriculationNumberTextBoxN" Height="24" Margin="47,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="20" HorizontalAlignment="Left" Width="181" />
+
+        <Label Content="First Name" Margin="42,75,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="88"/>
+        <TextBox x:Name="FirstNameTextBoxS" HorizontalAlignment="Left" Height="23" Margin="47,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="50" />
+
+        <Label Content="Last Name" HorizontalAlignment="Left" Margin="42,135,0,0" VerticalAlignment="Top" Height="23" Width="88"/>
+        <TextBox x:Name="LastNameTextBoxS" HorizontalAlignment="Left" Height="23" Margin="47,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" MaxLength="50" />
+
+        <Label Content="Component One" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="42,206,0,0" Height="26" Width="98" />
+        <TextBox x:Name="ComponentOneTextBoxG" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="158,206,0,0" Width="70" Height="22" MaxLength="3" />
+
+        <Label Content="Component Two" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="42,246,0,0" Height="26" Width="98" />
+        <TextBox x:Name="ComponentTwoTextBoxG" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="158,246,0,0" Height="22" MaxLength="5" />
+
+        <Label Content="Component Three" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="107" Margin="42,286,0,0" />
+        <TextBox x:Name="ComponentThreeTextBoxG" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="22" Margin="158,286,0,0" MaxLength="2" />
+
+        <CheckBox x:Name="NonSubmissionCheckBox" Content="Non-submission" HorizontalAlignment="Left" Margin="47,327,0,0" VerticalAlignment="Top" Controls:ToggleButtonHelper.ContentDirection="RightToLeft" Height="22" Width="129" Checked="NonSubmissionCheckBox_OnChecked" Unchecked="NonSubmissionCheckBox_UnChecked"/>
+
+        <Separator Margin="47,361,51,112"/>
+
+        <Label Content="Final Grade" HorizontalAlignment="Left" Margin="42,387,0,0" VerticalAlignment="Top" Height="23" Width="77" />
+        <TextBox x:Name="FinalGradeTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="158,383,0,0" VerticalAlignment="Top" Width="38" CaretBrush="Black" Foreground="Black" />
+
+        <Button x:Name="AddStudentButton" Content="ADD STUDENT" HorizontalAlignment="Left" Margin="23,433,0,0" VerticalAlignment="Top" Width="100" Click="AddStudentButton_OnClick"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="158,433,0,0" VerticalAlignment="Top" Width="100" Click="CancelButton_OnClick"/>
+
+    </Grid>
+</Controls:MetroWindow>

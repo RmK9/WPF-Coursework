@@ -9,22 +9,51 @@
 
 namespace CM3036_Coursework___Kolesov1308140
 {
-    using System;
     using System.Collections.Generic;
-    
+
     public partial class Student
     {
+        public int studentId { get; set; }
         public int matriculationNumber { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string componentOne { get; set; }
         public string componentTwo { get; set; }
         public string componentThree { get; set; }
+        public bool nonSubmission { get; set; }
         public string finalGrade { get; set; }
 
         public override string ToString()
         {
             return matriculationNumber + " - " + firstName + " " + lastName;
+        }
+
+        public static string CalculateFinalGrade(Dictionary<char, int> d)
+        {
+            var finalGrade = "F";
+
+            if (d['A'] >= 5 && d['B'] >= 7 && d['C'] >= 10)
+            {
+                finalGrade = "A";
+            }
+            else if (d['B'] >= 5 && d['C'] >= 7 && d['D'] >= 10)
+            {
+                finalGrade = "B";
+            }
+            else if (d['C'] >= 5 && d['D'] >= 7)
+            {
+                finalGrade = "C";
+            }
+            else if (d['D'] >= 5 && d['E'] >= 7)
+            {
+                finalGrade = "D";
+            }
+            else if (d['E'] >= 7)
+            {
+                finalGrade = "E";
+            }
+
+            return finalGrade;
         }
     }
 
