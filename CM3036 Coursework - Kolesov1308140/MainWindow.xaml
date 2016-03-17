@@ -18,7 +18,7 @@
             <Grid Margin="10,0,-1,-1" VerticalAlignment="Top" Height="470">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="265"/>
-                    <RowDefinition Height="160"/>
+                    <RowDefinition Height="205"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="350"/>
@@ -42,7 +42,7 @@
                         <TextBox x:Name="ComponentTwoTextBoxG" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.componentTwo)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="145,44,0,0" Height="22" MaxLength="5" />
                         <TextBox x:Name="ComponentThreeTextBoxG" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.componentThree)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="22" Margin="145,84,0,0" MaxLength="2" />
 
-                        <CheckBox x:Name="NonSubmissionCheckBox" IsHitTestVisible="False" Content="Non-submission" HorizontalAlignment="Left" Margin="15,121,0,0" VerticalAlignment="Top" Controls:ToggleButtonHelper.ContentDirection="RightToLeft" Height="22" Width="148" IsChecked="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.nonSubmission)}" Checked="NonSubmissionCheckBox_OnChecked" Unchecked="NonSubmissionCheckBox_UnChecked"/>
+                        <CheckBox x:Name="NonSubmissionCheckBox" Content="Non-submission" HorizontalAlignment="Left" Margin="15,121,0,0" VerticalAlignment="Top" Controls:ToggleButtonHelper.ContentDirection="RightToLeft" Height="22" Width="148" IsChecked="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.nonSubmission)}" Checked="NonSubmissionCheckBox_OnChecked" Unchecked="NonSubmissionCheckBox_UnChecked"/>
 
                         <Separator Margin="15,148,50,41"/>
 

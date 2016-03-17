@@ -34,6 +34,8 @@ namespace CM3036_Coursework___Kolesov1308140
         {
             try
             {
+                //Force open the connection to try to tackle "Underlying provider failed to open" exception
+                _studentEntities.Database.Connection.Open();
                 //Gets the student list from DB in a reverse order to keep the records
                 //in the same order as in DB and keep oldest records at top
                 return _studentEntities.Students.AsEnumerable().Reverse().ToList();
@@ -41,9 +43,13 @@ namespace CM3036_Coursework___Kolesov1308140
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to get Students from Database\nError Message: " + ex.Message +
-                                "\nPlease try again.");
+                MessageBox.Show("Error while trying to get Students from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
                 return new List<Student>();
+            }
+            finally
+            {
+                //Force close the connection
+                _studentEntities.Database.Connection.Close();
             }
         }
 
@@ -59,31 +65,57 @@ namespace CM3036_Coursework___Kolesov1308140
             //Early exit (do nothing) if no student selected
             if (selectedStudent == null) return;
 
-            _studentEntities.Students.Attach(selectedStudent);
+            try
+            {
+                _studentEntities.Database.Connection.Open();
+                _studentEntities.Students.Attach(selectedStudent);
 
-            selectedStudent.matriculationNumber = int.Parse(MatriculationNumberTextBoxN.Text);
-            selectedStudent.firstName = FirstNameTextBoxS.Text;
-            selectedStudent.lastName = LastNameTextBoxS.Text;
-            selectedStudent.componentOne = ComponentOneTextBoxG.Text;
-            selectedStudent.componentTwo = ComponentTwoTextBoxG.Text;
-            selectedStudent.componentThree = ComponentThreeTextBoxG.Text;
+                selectedStudent.matriculationNumber = int.Parse(MatriculationNumberTextBoxN.Text);
+                selectedStudent.firstName = FirstNameTextBoxS.Text;
+                selectedStudent.lastName = LastNameTextBoxS.Text;
+                if (!NonSubmissionCheckBox.IsChecked??false)
+                {
+                    selectedStudent.componentOne = ComponentOneTextBoxG.Text;
+                    selectedStudent.componentTwo = ComponentTwoTextBoxG.Text;
+                    selectedStudent.componentThree = ComponentThreeTextBoxG.Text;
+                    selectedStudent.nonSubmission = true;
+                }
+                else
+                {
+                    selectedStudent.componentOne = "";
+                    selectedStudent.componentTwo = "";
+                    selectedStudent.componentThree = "";
+                    selectedStudent.nonSubmission = false;
+                }
 
-            _studentEntities.Entry(selectedStudent).State = EntityState.Modified;
-            _studentEntities.SaveChanges();
-
-            //Refresh ListBox data
-            BindListBoxData();
+                _studentEntities.Entry(selectedStudent).State = EntityState.Modified;
+                _studentEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Error while trying to save Student from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
+            }
+            finally
+            {
+                _studentEntities.Database.Connection.Close();
+                //Refresh ListBox data
+                BindListBoxData();
+            }
         }
 
         public void DeleteSelectedStudentButton_OnClick(object sender, RoutedEventArgs e)
         {
+            var selectedStudent = GetSelectedStudent();
+
+            //Early exit (do nothing) if no student selected
+            if (selectedStudent == null) return;
+
             try
             {
-                var selectedStudent = GetSelectedStudent();
+                _studentEntities.Database.Connection.Open();
 
-                //Early exit (do nothing) if no student selected
-                if (selectedStudent == null) return;
-
+                _studentEntities.Database.Connection.Open();
                 _studentEntities.Students.Remove(selectedStudent);
                 _studentEntities.SaveChanges();
 
@@ -93,8 +125,11 @@ namespace CM3036_Coursework___Kolesov1308140
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying remove the Student from Database\nError Message: " + ex.Message +
-                                "\nPlease try again.");
+                MessageBox.Show("Error while trying to remove Student from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
+            }
+            finally
+            {
+                _studentEntities.Database.Connection.Close();
             }
         }
 
@@ -114,8 +149,8 @@ namespace CM3036_Coursework___Kolesov1308140
             foreach (var tb in GetGradeTextBoxes())
             {
                 tb.IsEnabled = false;
+                tb.Text = tb.Text.Trim();
             }
-
         }
 
         private void NonSubmissionCheckBox_UnChecked(object sender, RoutedEventArgs e)

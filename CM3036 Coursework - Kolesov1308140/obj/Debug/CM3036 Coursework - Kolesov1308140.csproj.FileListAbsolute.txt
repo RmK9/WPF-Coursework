@@ -131,3 +131,31 @@ C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Course
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.baml
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.g.cs
 C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.baml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe.config
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.exe
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.pdb
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\StudentsDB.mdf
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\StudentsDB_log.ldf
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.pdb
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.dll
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.SqlServer.dll
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.dll
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\System.Windows.Interactivity.dll
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.xml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.SqlServer.xml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.pdb
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.xml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csprojResolveAssemblyReference.cache
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.g.cs
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindow.g.cs
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\App.g.cs
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_Content.g.cs
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_MarkupCompile.cache
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_MarkupCompile.lref
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\App.baml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.baml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindow.baml
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.g.resources
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036_Coursework___Kolesov1308140.Properties.Resources.resources
+H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csproj.GenerateResource.Cache
