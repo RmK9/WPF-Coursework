@@ -29,17 +29,17 @@
                     <Grid>
                         <Label Content="Matriculation number - Full Name" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Height="26" Width="210" />
                         <Image Grid.Row="0" Grid.Column="0" x:Name="RefreshStudentListImage" Source="Images/refresh-icon.png"  MouseLeave="RefreshStudentListImage_OnMouseLeave" MouseEnter="RefreshStudentListImage_OnMouseEnter" MouseLeftButtonDown="RefreshStudentListImage_OnMouseLeftButtonDown" RenderOptions.BitmapScalingMode="NearestNeighbor"
-       RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="22" Margin="260,-30,0,0" VerticalAlignment="Top" Width="21">
+       RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="22" Margin="281,-30,0,0" VerticalAlignment="Top" Width="21">
                             <Image.ToolTip>
                                 <ToolTip Content="Refresh Student List"></ToolTip>
                             </Image.ToolTip>
                         </Image>
                         <ListBox x:Name="StudentsListBox" ItemsSource="{Binding}" Height="167" Margin="10,26,10,0" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" />
 
-                        <Label Content="Show Students who:" Margin="96,198,96,45"></Label>
-                        <RadioButton x:Name="PassedRadioButton" GroupName="DisplayType" Content="Passed" Margin="16,231,230,17" Checked="RebindListBoxRadioButtons_OnChecked"></RadioButton>
-                        <RadioButton x:Name="FailedRadioButton" GroupName="DisplayType" Content="Failed" Margin="108,231,146,17" Checked="RebindListBoxRadioButtons_OnChecked"/>
-                        <RadioButton x:Name="ShowEveryoneRadioButton" GroupName="DisplayType" Content="Show Everyone" Margin="195,231,10,17" IsChecked="True" Checked="RebindListBoxRadioButtons_OnChecked"></RadioButton>
+                        <Label Content="Show Students who:" Margin="161,198,31,45"></Label>
+                        <RadioButton x:Name="PassedRadioButton" GroupName="DisplayType" Content="Passed" Margin="146,231,100,17" Checked="RebindListBoxRadioButtons_OnChecked"></RadioButton>
+                        <RadioButton x:Name="FailedRadioButton" GroupName="DisplayType" Content="Failed" Margin="238,231,16,17" Checked="RebindListBoxRadioButtons_OnChecked"/>
+                        <RadioButton x:Name="ShowEveryoneRadioButton" GroupName="DisplayType" Content="Show Everyone" Margin="18,231,188,17" IsChecked="True" Checked="RebindListBoxRadioButtons_OnChecked"></RadioButton>
                     </Grid>
                 </GroupBox>
 
@@ -129,7 +129,6 @@
                                 <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.componentThree)" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <local:TextBoxValidationRules TextBoxRuleType="ComponentThree" />
-
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>
@@ -138,22 +137,21 @@
                             </TextBox.IsEnabled>
                         </TextBox>
 
-                        <CheckBox x:Name="NonSubmissionCheckBox" Content="Non-submission" HorizontalAlignment="Left" Margin="15,121,0,0" VerticalAlignment="Top" Controls:ToggleButtonHelper.ContentDirection="RightToLeft" Height="22" Width="148" IsChecked="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.nonSubmission)}" Checked="NonSubmissionCheckBox_OnChecked" Unchecked="NonSubmissionCheckBox_UnChecked"/>
+                        <CheckBox x:Name="NonSubmissionCheckBox" Content="Non-submission" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Margin="15,121,0,0" VerticalAlignment="Top" Controls:ToggleButtonHelper.ContentDirection="RightToLeft" Height="22" Width="148" IsChecked="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.nonSubmission)}" Checked="NonSubmissionCheckBox_OnChecked" Unchecked="NonSubmissionCheckBox_UnChecked"/>
 
                         <Separator Margin="15,148,50,41"/>
 
                         <Label Content="Final Grade" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Height="26" Width="107" />
                         <TextBox x:Name="FinalGradeTextBox" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.finalGrade)}" IsReadOnly="True" HorizontalAlignment="Left" Height="14" Margin="145,168,0,0" VerticalAlignment="Top" Width="26" CaretBrush="Black" Foreground="Black" />
-                        <Button x:Name="button" Content="ReCalc" HorizontalAlignment="Left" Margin="180,169,0,0" VerticalAlignment="Top" Width="75"/>
                     </Grid>
                 </GroupBox>
-
+                
+                <Button x:Name="AddNewStudentButton" Content="Add a New Student" HorizontalAlignment="Left" Margin="22,19,0,0"
+                        Grid.Row="1" Grid.Column="0" Width="146" Click="AddNewStudentButton_OnClick" Height="30" VerticalAlignment="Top"/>
                 <Button x:Name="ApplyChangesButton" Content="Apply Changes" HorizontalAlignment="Left" Margin="189,19,0,0" Grid.Row="1"
                         Grid.Column="0" Width="145" Height="30" Click="ApplyChangesButton_OnClick" VerticalAlignment="Top" />
-                <Button x:Name="RevertLastChangeButton" Content="Revert Last Change" HorizontalAlignment="Left" Margin="14,19,0,0" Grid.Row="1"
-                        Grid.Column="0" VerticalAlignment="Top" Width="146" Height="30"/>
-                <Button x:Name="AddNewStudentButton" Content="Add a New Student" HorizontalAlignment="Left" Margin="14,67,0,0"
-                        Grid.Row="1" Grid.Column="0" Width="146" Click="AddNewStudentButton_OnClick" Height="30" VerticalAlignment="Top"/>
+                <Button x:Name="DeleteAllStudentsButton" Content="DELETE ALL STUDENTS" HorizontalAlignment="Left" Margin="22,67,0,0" Grid.Row="1"
+                        Grid.Column="0" VerticalAlignment="Top" Width="146" Height="30" Click="DeleteAllStudentsButton_OnClick"/>
                 <Button x:Name="DeleteSelectedStudentButton" Content="DELETE SELECTED STUDENT" HorizontalAlignment="Left" Margin="189,67,0,0"
                 	Grid.Row="1" Grid.Column="0" Width="145" Height="30" VerticalAlignment="Top" Click="DeleteSelectedStudentButton_OnClick"/>
 

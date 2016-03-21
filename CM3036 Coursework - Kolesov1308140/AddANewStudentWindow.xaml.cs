@@ -50,6 +50,8 @@ namespace CM3036_Coursework___Kolesov1308140
             var dict = new Dictionary<char, int>{{'A', gradeList.Count(c => c == 'A')}};
 
             //Counts the number of occurences and summs it up with the higher value grade then adds the key and pair
+            //This assumes a grade "A" is also a grade "B", "C", "D" and etc. - this logic is taken into account in the
+            //final grade calculating formula. 
             dict.Add('B', gradeList.Count(c => c == 'B') + dict['A']);
             dict.Add('C', gradeList.Count(c => c == 'C') + dict['B']);
             dict.Add('D', gradeList.Count(c => c == 'D') + dict['C']);
@@ -81,17 +83,11 @@ namespace CM3036_Coursework___Kolesov1308140
                 //Save change made to DB
                 studentEntities.SaveChanges();
                 //Refresh the listbox
-                ((MainWindow)Owner).BindListBoxData();
+                ((MainWindow) Owner).BindListBoxData();
                 //Close secondary window
                 Close();
             }
-            catch (EntityException ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to add a Student to Database\nError Message: " + ex.Message +
-                                "\nPlease try to run the application again.");
-            }
-            catch (TimeoutException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show("Error while trying to add a Student to Database\nError Message: " + ex.Message +

@@ -98,6 +98,7 @@ namespace CM3036_Coursework___Kolesov1308140
                         selectedStudent.componentThree = "";
                         selectedStudent.nonSubmission = true;
                     }
+                    selectedStudent.finalGrade = FinalGradeTextBox.Text;
 
                     _studentEntities.Entry(selectedStudent).State = EntityState.Modified;
                     _studentEntities.SaveChanges();
@@ -118,6 +119,8 @@ namespace CM3036_Coursework___Kolesov1308140
             finally
             {
                 _studentEntities.Database.Connection.Close();
+                //Unselect student in ListBox
+                StudentsListBox.UnselectAll();
                 //Refresh ListBox data
                 BindListBoxData();
             }
@@ -133,13 +136,8 @@ namespace CM3036_Coursework___Kolesov1308140
             try
             {
                 _studentEntities.Database.Connection.Open();
-
-                _studentEntities.Database.Connection.Open();
                 _studentEntities.Students.Remove(selectedStudent);
                 _studentEntities.SaveChanges();
-
-                //Refresh ListBox data
-                BindListBoxData();
             }
             catch (Exception ex)
             {
@@ -149,6 +147,32 @@ namespace CM3036_Coursework___Kolesov1308140
             finally
             {
                 _studentEntities.Database.Connection.Close();
+                //Refresh ListBox data
+                BindListBoxData();
+            }
+        }
+
+        private void DeleteAllStudentsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var confirmationMsgBox = MessageBox.Show("All student recors will be deleted.\n\nDo you wish to continue?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            
+            if (confirmationMsgBox == MessageBoxResult.No) return;
+            try
+            {
+                _studentEntities.Database.Connection.Open();
+                _studentEntities.Students.RemoveRange(_studentEntities.Students.Where(s => true));
+                _studentEntities.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Error while trying to remove Student from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
+            }
+            finally
+            {
+                _studentEntities.Database.Connection.Close();
+                //Refresh ListBox data
+                BindListBoxData();
             }
         }
 
@@ -170,6 +194,10 @@ namespace CM3036_Coursework___Kolesov1308140
                 tb.IsEnabled = false;
                 ResetGradeValidationRules(tb, true);
                 tb.Text = tb.Text.Trim();
+                tb.PreviewKeyDown -= CalculateFinalGrade;
+                tb.TextChanged -= CalculateFinalGrade;
+                DataObject.RemovePastingHandler(tb, CalculateFinalGrade);
+                FinalGradeTextBox.Text = "F";
             }
 
         }
@@ -180,14 +208,45 @@ namespace CM3036_Coursework___Kolesov1308140
             {
                 tb.IsEnabled = true;
                 ResetGradeValidationRules(tb, false);
+                tb.PreviewKeyDown += CalculateFinalGrade;
+                tb.TextChanged += CalculateFinalGrade;
+                DataObject.AddPastingHandler(tb, CalculateFinalGrade);
+                FinalGradeTextBox.Text = Student.CalculateFinalGrade(GetCountedGradesDictionary());
             }
+        }
+
+        public void CalculateFinalGrade(object sender, RoutedEventArgs e)
+        {
+            FinalGradeTextBox.Text = Student.CalculateFinalGrade(GetCountedGradesDictionary());
+        }
+
+        private Dictionary<char, int> GetCountedGradesDictionary()
+        {
+            var gradeList = (ComponentOneTextBoxG.Text + ComponentTwoTextBoxG.Text + ComponentThreeTextBoxG.Text).ToList();
+
+            //Hardcoding grade keys here since those are not going to change or be dynamic anyway
+            //Initializing new[]{char} array for example would just waste space in this scenario
+            var dict = new Dictionary<char, int> { { 'A', gradeList.Count(c => c == 'A') } };
+
+            //Counts the number of occurences and summs it up with the higher value grade then adds the key and pair
+            //This assumes a grade "A" is also a grade "B", "C", "D" and etc. - this logic is taken into account in the
+            //final grade calculating formula. 
+            dict.Add('B', gradeList.Count(c => c == 'B') + dict['A']);
+            dict.Add('C', gradeList.Count(c => c == 'C') + dict['B']);
+            dict.Add('D', gradeList.Count(c => c == 'D') + dict['C']);
+            dict.Add('E', gradeList.Count(c => c == 'E') + dict['D']);
+            dict.Add('F', gradeList.Count(c => c == 'F') + dict['E']);
+
+            return dict;
         }
 
         private void ResetGradeValidationRules(TextBox tb, bool isChecked)
         {
-            var b = BindingOperations.GetBinding(tb, TextBox.TextProperty).ValidationRules;
-            b.Clear();
-            b.Add(new TextBoxValidationRules { TextBoxRuleType = tb.Name.Substring(0, tb.Name.IndexOf("TextBox")), IsNonSubmission = isChecked });
+            var b = BindingOperations.GetBinding(tb, TextBox.TextProperty);
+            if (b == null) return;
+            var val = b.ValidationRules;
+            val.Clear();
+            val.Add(new TextBoxValidationRules { TextBoxRuleType = tb.Name.Substring(0, tb.Name.IndexOf("TextBox", StringComparison.Ordinal)), IsNonSubmission = isChecked });
         }
 
         private void RefreshStudentListImage_OnMouseEnter(object sender, MouseEventArgs e)

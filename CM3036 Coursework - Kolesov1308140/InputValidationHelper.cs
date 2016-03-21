@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using MahApps.Metro.Controls;
 
@@ -190,19 +186,19 @@ namespace CM3036_Coursework___Kolesov1308140
                 switch (textBoxType)
                 {
                     case "N":
-                        tb.PreviewKeyDown += InputValidationHelper.AllowOnlyNumbers_OnKeyDown;
-                        tb.TextChanged += InputValidationHelper.AllowOnlyNumbers_TextChanged;
-                        DataObject.AddPastingHandler(tb, InputValidationHelper.AllowOnlyNumbers_PasteHandler);
+                        tb.PreviewKeyDown += AllowOnlyNumbers_OnKeyDown;
+                        tb.TextChanged += AllowOnlyNumbers_TextChanged;
+                        DataObject.AddPastingHandler(tb, AllowOnlyNumbers_PasteHandler);
                         break;
                     case "S":
-                        tb.PreviewKeyDown += InputValidationHelper.AllowOnlyAlphabeticalChars_OnKeyDown;
-                        tb.TextChanged += InputValidationHelper.AllowOnlyAlphabeticalChars_TextChanged;
-                        DataObject.AddPastingHandler(tb, InputValidationHelper.AllowOnlyAlphabeticalChars_PasteHandler);
+                        tb.PreviewKeyDown += AllowOnlyAlphabeticalChars_OnKeyDown;
+                        tb.TextChanged += AllowOnlyAlphabeticalChars_TextChanged;
+                        DataObject.AddPastingHandler(tb, AllowOnlyAlphabeticalChars_PasteHandler);
                         break;
                     case "G":
-                        tb.PreviewKeyDown += InputValidationHelper.AllowOnlyGradeLetters_OnKeyDown;
-                        tb.TextChanged += InputValidationHelper.AllowOnlyGradeLetters_TextChanged;
-                        DataObject.AddPastingHandler(tb, InputValidationHelper.AllowOnlyGradeLetters_PasteHandler);
+                        tb.PreviewKeyDown += AllowOnlyGradeLetters_OnKeyDown;
+                        tb.TextChanged += AllowOnlyGradeLetters_TextChanged;
+                        DataObject.AddPastingHandler(tb, AllowOnlyGradeLetters_PasteHandler);
                         break;
                 }
             }
