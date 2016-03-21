@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CM3036_Coursework___Kolesov1308140"
-        Icon="RGU Logo.ico"
+        Icon="Images/RGU Logo.ico"
         mc:Ignorable="d"
         ShowIconOnTitleBar="False"
         BorderThickness="0" 
@@ -37,7 +37,7 @@
         <Separator Margin="47,361,51,112"/>
 
         <Label Content="Final Grade" HorizontalAlignment="Left" Margin="42,387,0,0" VerticalAlignment="Top" Height="23" Width="77" />
-        <TextBox x:Name="FinalGradeTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="158,383,0,0" VerticalAlignment="Top" Width="38" CaretBrush="Black" Foreground="Black" />
+        <TextBox x:Name="FinalGradeTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="158,383,0,0" VerticalAlignment="Top" Width="26" CaretBrush="Black" Foreground="Black" />
 
         <Button x:Name="AddStudentButton" Content="ADD STUDENT" HorizontalAlignment="Left" Margin="23,433,0,0" VerticalAlignment="Top" Width="100" Click="AddStudentButton_OnClick"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="158,433,0,0" VerticalAlignment="Top" Width="100" Click="CancelButton_OnClick"/>

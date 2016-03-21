@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using MahApps.Metro.Controls;
 
@@ -206,6 +207,39 @@ namespace CM3036_Coursework___Kolesov1308140
                 }
             }
         }
+
+        public static string GetErrorListForWrongInput(MetroWindow mw)
+        {
+            var errorList = "";
+            var NSIsChecked = FindLogicalChildren<CheckBox>(mw).First().IsChecked??false;
+
+            foreach (TextBox tb in FindLogicalChildren<TextBox>(mw))
+            {
+                var textBoxType = tb.Name.Substring(tb.Name.Length - 1);
+                if (textBoxType == "N" && tb.Text.Length < 1)
+                {
+                    errorList += "Matriculation Number must be a number between 1 and 20 characters.\n";
+                }
+                else if (textBoxType == "S" && tb.Text.Length < 2)
+                {
+                    errorList += "Student First and Last names must be between 2 and 50 alphabetical characters each.\n";
+                }
+                else if ((textBoxType == "G" && tb.Name.Contains("One")) && tb.Text.Length != 3 && !NSIsChecked)
+                {
+                    errorList += "Component One must contain Grades (A, B, C, D, E, F) 3 characters long exactly.\n";
+                }
+                else if ((textBoxType == "G" && tb.Name.Contains("Two")) && tb.Text.Length != 5 && !NSIsChecked)
+                {
+                    errorList += "Component Two must contain Grades (A, B, C, D, E, F) 5 characters long exactly.\n";
+                }
+                else if ((textBoxType == "G" && tb.Name.Contains("Three")) && tb.Text.Length != 2 && !NSIsChecked)
+                {
+                    errorList += "Component Three must contain Grades (A, B, C, D, E, F) 2 characters long exactly.\n";
+                }
+            }
+
+            return errorList;
+        } 
         #endregion
     }
 

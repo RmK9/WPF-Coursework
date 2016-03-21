@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:CM3036_Coursework___Kolesov1308140"
-        Icon="RGU Logo.ico"
+        Icon="Images/RGU Logo.ico"
         mc:Ignorable="d"
         ShowIconOnTitleBar="False"
         BorderThickness="0" 
@@ -17,30 +17,126 @@
         <TabItem Header="Students - Main Window" Margin="15,0,-17,5">
             <Grid Margin="10,0,-1,-1" VerticalAlignment="Top" Height="470">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="265"/>
-                    <RowDefinition Height="205"/>
+                    <RowDefinition Height="340"/>
+                    <RowDefinition Height="130"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="350"/>
                     <ColumnDefinition Width="350"/>
                 </Grid.ColumnDefinitions>
 
-                <GroupBox Header="Students" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="0" Height="242" HorizontalAlignment="Left" Width="306">
+                <GroupBox Header="Students" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Column="0" Height="310" HorizontalAlignment="Left" Width="324">
                     <Grid>
                         <Label Content="Matriculation number - Full Name" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Height="26" Width="210" />
-                        <ListBox x:Name="StudentsListBox" ItemsSource="{Binding}" Height="180" Margin="10,26,10,0" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" />
+                        <Image Grid.Row="0" Grid.Column="0" x:Name="RefreshStudentListImage" Source="Images/refresh-icon.png"  MouseLeave="RefreshStudentListImage_OnMouseLeave" MouseEnter="RefreshStudentListImage_OnMouseEnter" MouseLeftButtonDown="RefreshStudentListImage_OnMouseLeftButtonDown" RenderOptions.BitmapScalingMode="NearestNeighbor"
+       RenderOptions.EdgeMode="Aliased" HorizontalAlignment="Left" Height="22" Margin="260,-30,0,0" VerticalAlignment="Top" Width="21">
+                            <Image.ToolTip>
+                                <ToolTip Content="Refresh Student List"></ToolTip>
+                            </Image.ToolTip>
+                        </Image>
+                        <ListBox x:Name="StudentsListBox" ItemsSource="{Binding}" Height="167" Margin="10,26,10,0" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Semibold" />
+
+                        <Label Content="Show Students who:" Margin="96,198,96,45"></Label>
+                        <RadioButton x:Name="PassedRadioButton" GroupName="DisplayType" Content="Passed" Margin="16,231,230,17" Checked="RebindListBoxRadioButtons_OnChecked"></RadioButton>
+                        <RadioButton x:Name="FailedRadioButton" GroupName="DisplayType" Content="Failed" Margin="108,231,146,17" Checked="RebindListBoxRadioButtons_OnChecked"/>
+                        <RadioButton x:Name="ShowEveryoneRadioButton" GroupName="DisplayType" Content="Show Everyone" Margin="195,231,10,17" IsChecked="True" Checked="RebindListBoxRadioButtons_OnChecked"></RadioButton>
                     </Grid>
                 </GroupBox>
 
-                <GroupBox Header="Student Grades" Margin="10,208,0,-24" Grid.Column="1" RenderTransformOrigin="-0.2,0.087" Height="243" VerticalAlignment="Top" Grid.RowSpan="2" HorizontalAlignment="Left" Width="277">
+                <GroupBox Grid.Row="0" Grid.Column="1" Header="Student Information" Margin="10,10,0,0" VerticalAlignment="Top" Height="180" HorizontalAlignment="Left" Width="277">
+                    <Grid>
+                        <Label Content="Matriculation&#xD;&#xA;Number" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="42" Width="88"/>
+                        <Label Content="First Name" Margin="10,66,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="88"/>
+                        <Label Content="Last Name" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
+
+                        <TextBox x:Name="MatriculationNumberTextBoxN" HorizontalAlignment="Left" Height="24" Margin="103,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" MaxLength="20">
+                            <TextBox.Text>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.matriculationNumber)" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:TextBoxValidationRules TextBoxRuleType="MatriculationNumber" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <TextBox.IsEnabled>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItems.Count"/>
+                            </TextBox.IsEnabled>
+                        </TextBox>
+
+                        <TextBox x:Name="FirstNameTextBoxS" Margin="103,63,12,52" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" MaxLength="50">
+                            <TextBox.Text>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.firstName)" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:TextBoxValidationRules TextBoxRuleType="FirstName" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <TextBox.IsEnabled>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItems.Count"/>
+                            </TextBox.IsEnabled>
+                        </TextBox>
+
+                        <TextBox x:Name="LastNameTextBoxS" HorizontalAlignment="Left" Height="23" Margin="103,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" MaxLength="50">
+                            <TextBox.Text>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.lastName)" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:TextBoxValidationRules TextBoxRuleType="LastName" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <TextBox.IsEnabled>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItems.Count"/>
+                            </TextBox.IsEnabled>
+                        </TextBox>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="Student Grades" Margin="10,208,0,-24" Grid.Column="1" RenderTransformOrigin="-0.2,0.087" Height="243" VerticalAlignment="Top"
+                          Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="277">
                     <Grid>
                         <Label Content="Component One" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" Height="26" Width="130" />
                         <Label Content="Component Two" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,44,0,0" Height="26" Width="130" />
                         <Label Content="Component Three" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="130" Margin="10,84,0,0" />
 
-                        <TextBox x:Name="ComponentOneTextBoxG" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.componentOne)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,4,0,0" Width="70" Height="22" MaxLength="3" />
-                        <TextBox x:Name="ComponentTwoTextBoxG" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.componentTwo)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="145,44,0,0" Height="22" MaxLength="5" />
-                        <TextBox x:Name="ComponentThreeTextBoxG" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.componentThree)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="22" Margin="145,84,0,0" MaxLength="2" />
+                        <TextBox x:Name="ComponentOneTextBoxG" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="145,4,0,0" Width="70" Height="22" MaxLength="3">
+                            <TextBox.Text>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.componentOne)" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:TextBoxValidationRules TextBoxRuleType="ComponentOne" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <TextBox.IsEnabled>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItems.Count" />
+                            </TextBox.IsEnabled>
+                        </TextBox>
+
+                        <TextBox x:Name="ComponentTwoTextBoxG" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Margin="145,44,0,0" Height="22" MaxLength="5" >
+                            <TextBox.Text>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.componentTwo)" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:TextBoxValidationRules TextBoxRuleType="ComponentTwo" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <TextBox.IsEnabled>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItems.Count"/>
+                            </TextBox.IsEnabled>
+                        </TextBox>
+
+                        <TextBox x:Name="ComponentThreeTextBoxG" CharacterCasing="Upper" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="22" Margin="145,84,0,0" MaxLength="2" >
+                            <TextBox.Text>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItem.(local:Student.componentThree)" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <local:TextBoxValidationRules TextBoxRuleType="ComponentThree" />
+
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                            <TextBox.IsEnabled>
+                                <Binding ElementName="StudentsListBox" Path="SelectedItems.Count"/>
+                            </TextBox.IsEnabled>
+                        </TextBox>
 
                         <CheckBox x:Name="NonSubmissionCheckBox" Content="Non-submission" HorizontalAlignment="Left" Margin="15,121,0,0" VerticalAlignment="Top" Controls:ToggleButtonHelper.ContentDirection="RightToLeft" Height="22" Width="148" IsChecked="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.nonSubmission)}" Checked="NonSubmissionCheckBox_OnChecked" Unchecked="NonSubmissionCheckBox_UnChecked"/>
 
@@ -48,28 +144,18 @@
 
                         <Label Content="Final Grade" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Height="26" Width="107" />
                         <TextBox x:Name="FinalGradeTextBox" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.finalGrade)}" IsReadOnly="True" HorizontalAlignment="Left" Height="14" Margin="145,168,0,0" VerticalAlignment="Top" Width="26" CaretBrush="Black" Foreground="Black" />
+                        <Button x:Name="button" Content="ReCalc" HorizontalAlignment="Left" Margin="180,169,0,0" VerticalAlignment="Top" Width="75"/>
                     </Grid>
                 </GroupBox>
 
-                <GroupBox Grid.Column="1" Header="Student Information" Margin="10,10,0,0" VerticalAlignment="Top" Height="180" HorizontalAlignment="Left" Width="277">
-                    <Grid>
-                        <Label Content="Matriculation&#xD;&#xA;Number" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Height="42" Width="88"/>
-                        <TextBox x:Name="MatriculationNumberTextBoxN" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.matriculationNumber)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Height="24" Margin="103,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" MaxLength="20" />
-
-                        <Label Content="First Name" Margin="10,66,0,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Left" Width="88"/>
-                        <TextBox x:Name="FirstNameTextBoxS" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.firstName)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Height="23" Margin="103,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" MaxLength="50" />
-
-                        <Label Content="Last Name" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="26" Width="88"/>
-                        <TextBox x:Name="LastNameTextBoxS" Text="{Binding ElementName=StudentsListBox, Path=SelectedItem.(local:Student.lastName)}" IsEnabled="{Binding ElementName=StudentsListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Height="23" Margin="103,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" MaxLength="50" />
-                    </Grid>
-                </GroupBox>
                 <Button x:Name="ApplyChangesButton" Content="Apply Changes" HorizontalAlignment="Left" Margin="189,19,0,0" Grid.Row="1"
                         Grid.Column="0" Width="145" Height="30" Click="ApplyChangesButton_OnClick" VerticalAlignment="Top" />
-                <Button x:Name="RevertLastChangeButton" Content="Revert Last Change" HorizontalAlignment="Left" Margin="14,19,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="30"/>
+                <Button x:Name="RevertLastChangeButton" Content="Revert Last Change" HorizontalAlignment="Left" Margin="14,19,0,0" Grid.Row="1"
+                        Grid.Column="0" VerticalAlignment="Top" Width="146" Height="30"/>
                 <Button x:Name="AddNewStudentButton" Content="Add a New Student" HorizontalAlignment="Left" Margin="14,67,0,0"
-                        Grid.Row="1" Width="146" Click="AddNewStudentButton_OnClick" Height="30" VerticalAlignment="Top"/>
+                        Grid.Row="1" Grid.Column="0" Width="146" Click="AddNewStudentButton_OnClick" Height="30" VerticalAlignment="Top"/>
                 <Button x:Name="DeleteSelectedStudentButton" Content="DELETE SELECTED STUDENT" HorizontalAlignment="Left" Margin="189,67,0,0"
-                	Grid.Row="1" Width="145" Height="30" VerticalAlignment="Top" Click="DeleteSelectedStudentButton_OnClick"/>
+                	Grid.Row="1" Grid.Column="0" Width="145" Height="30" VerticalAlignment="Top" Click="DeleteSelectedStudentButton_OnClick"/>
 
             </Grid>
 

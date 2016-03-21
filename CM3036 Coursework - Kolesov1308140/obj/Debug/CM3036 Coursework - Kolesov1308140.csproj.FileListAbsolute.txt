@@ -103,34 +103,6 @@ E:\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\CM3036 
 E:\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csproj.GenerateResource.Cache
 E:\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.exe
 E:\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.pdb
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindow.g.cs
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.g.cs
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_Content.g.cs
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_MarkupCompile.cache
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_MarkupCompile.lref
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe.config
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\StudentsDB.mdf
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\StudentsDB_log.ldf
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.pdb
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.dll
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.xml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindow.baml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.g.resources
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036_Coursework___Kolesov1308140.Properties.Resources.resources
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csproj.GenerateResource.Cache
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.exe
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.pdb
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csprojResolveAssemblyReference.cache
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.dll
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\System.Windows.Interactivity.dll
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.pdb
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.xml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.baml
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.g.cs
-C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.baml
 H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe.config
 H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.exe
 H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.pdb
@@ -159,3 +131,32 @@ H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindo
 H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.g.resources
 H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036_Coursework___Kolesov1308140.Properties.Resources.resources
 H:\Desktop\WPF-Coursework\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csproj.GenerateResource.Cache
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\StudentsDB.mdf
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\StudentsDB_log.ldf
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe.config
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.exe
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\CM3036 Coursework - Kolesov1308140.pdb
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.dll
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.dll
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.xml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.pdb
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\bin\Debug\MahApps.Metro.xml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.g.cs
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindow.g.cs
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.g.cs
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_Content.g.cs
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_MarkupCompile.cache
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140_MarkupCompile.lref
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\App.baml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\AddANewStudentWindow.baml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\MainWindow.baml
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.g.resources
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036_Coursework___Kolesov1308140.Properties.Resources.resources
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csproj.GenerateResource.Cache
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.exe
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.pdb
+C:\Users\Main\Desktop\CM3036 CW\CM3036 Coursework - Kolesov1308140\CM3036 Coursework - Kolesov1308140\obj\Debug\CM3036 Coursework - Kolesov1308140.csprojResolveAssemblyReference.cache
