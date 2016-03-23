@@ -197,9 +197,9 @@ namespace CM3036_Coursework___Kolesov1308140
                 tb.PreviewKeyDown -= CalculateFinalGrade;
                 tb.TextChanged -= CalculateFinalGrade;
                 DataObject.RemovePastingHandler(tb, CalculateFinalGrade);
-                FinalGradeTextBox.Text = "F";
             }
 
+            FinalGradeTextBox.Text = "F";
         }
 
         private void NonSubmissionCheckBox_UnChecked(object sender, RoutedEventArgs e)
@@ -211,8 +211,9 @@ namespace CM3036_Coursework___Kolesov1308140
                 tb.PreviewKeyDown += CalculateFinalGrade;
                 tb.TextChanged += CalculateFinalGrade;
                 DataObject.AddPastingHandler(tb, CalculateFinalGrade);
-                FinalGradeTextBox.Text = Student.CalculateFinalGrade(GetCountedGradesDictionary());
             }
+
+            FinalGradeTextBox.Text = Student.CalculateFinalGrade(GetCountedGradesDictionary());
         }
 
         public void CalculateFinalGrade(object sender, RoutedEventArgs e)

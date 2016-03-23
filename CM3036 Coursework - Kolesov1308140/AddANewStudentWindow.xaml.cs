@@ -4,6 +4,7 @@ using System.Data.Entity.Core;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace CM3036_Coursework___Kolesov1308140
 {
@@ -19,6 +20,8 @@ namespace CM3036_Coursework___Kolesov1308140
             InputValidationHelper.AttachTextBoxInputEventHandlers(this);
 
             BindFinalGradeCalculation_OnInputChange();
+
+            ResetTextBoxesAndBindValidationRules();
         }
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)
@@ -59,6 +62,19 @@ namespace CM3036_Coursework___Kolesov1308140
             dict.Add('F', gradeList.Count(c => c == 'F') + dict['E']);
 
             return dict;
+        }
+
+        private void ResetTextBoxesAndBindValidationRules()
+        {
+            foreach (var tb in InputValidationHelper.FindLogicalChildren<TextBox>(this))
+            {
+                tb.Text = "";
+                var b = BindingOperations.GetBinding(tb, TextBox.TextProperty);
+                if (b == null) return;
+                var val = b.ValidationRules;
+                val.Clear();
+                val.Add(new TextBoxValidationRules { TextBoxRuleType = tb.Name.Substring(0, tb.Name.IndexOf("TextBox", StringComparison.Ordinal)) });
+            }
         }
 
         private void AddStudentButton_OnClick(object sender, RoutedEventArgs e)
@@ -110,6 +126,11 @@ namespace CM3036_Coursework___Kolesov1308140
             foreach (var tb in GetGradeTextBoxes())
             {
                 tb.IsEnabled = false;
+                ResetGradeValidationRules(tb, true);
+                tb.Text = tb.Text.Trim();
+                tb.PreviewKeyDown -= CalculateFinalGrade;
+                tb.TextChanged -= CalculateFinalGrade;
+                DataObject.RemovePastingHandler(tb, CalculateFinalGrade);
             }
 
             FinalGradeTextBox.Text = "F";
@@ -120,9 +141,22 @@ namespace CM3036_Coursework___Kolesov1308140
             foreach (var tb in GetGradeTextBoxes())
             {
                 tb.IsEnabled = true;
+                ResetGradeValidationRules(tb, false);
+                tb.PreviewKeyDown += CalculateFinalGrade;
+                tb.TextChanged += CalculateFinalGrade;
+                DataObject.AddPastingHandler(tb, CalculateFinalGrade);
             }
 
             FinalGradeTextBox.Text = Student.CalculateFinalGrade(GetCountedGradesDictionary());
+        }
+
+        private void ResetGradeValidationRules(TextBox tb, bool isChecked)
+        {
+            var b = BindingOperations.GetBinding(tb, TextBox.TextProperty);
+            if (b == null) return;
+            var val = b.ValidationRules;
+            val.Clear();
+            val.Add(new TextBoxValidationRules { TextBoxRuleType = tb.Name.Substring(0, tb.Name.IndexOf("TextBox", StringComparison.Ordinal)), IsNonSubmission = isChecked });
         }
     }
 }
