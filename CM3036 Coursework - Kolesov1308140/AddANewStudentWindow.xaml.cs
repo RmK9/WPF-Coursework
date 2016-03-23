@@ -81,38 +81,60 @@ namespace CM3036_Coursework___Kolesov1308140
         {
             var studentEntities = new StudentEntities();
 
-            try
-            {
-                //Force open the connection
-                studentEntities.Database.Connection.Open();
-                studentEntities.Students.Add(new Student
-                {
-                    matriculationNumber = int.Parse(MatriculationNumberTextBoxN.Text),
-                    firstName = FirstNameTextBoxS.Text,
-                    lastName = LastNameTextBoxS.Text,
-                    componentOne = ComponentOneTextBoxG.Text,
-                    componentTwo = ComponentTwoTextBoxG.Text,
-                    componentThree = ComponentThreeTextBoxG.Text,
-                    finalGrade = FinalGradeTextBox.Text
-                });
+            var errorList = InputValidationHelper.GetErrorListForWrongInput(this);
 
-                //Save change made to DB
-                studentEntities.SaveChanges();
-                //Refresh the listbox
-                ((MainWindow) Owner).BindListBoxData();
-                //Close secondary window
-                Close();
-            }
-            catch (Exception ex)
+            //If no errors
+            if (errorList == "")
             {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to add a Student to Database\nError Message: " + ex.Message +
-                                "\nPlease try to run the application again.");
+                try
+                {
+                    //Force open the connection
+                    studentEntities.Database.Connection.Open();
+                    var newStudent = new Student();
+
+                    newStudent.matriculationNumber = int.Parse(MatriculationNumberTextBoxN.Text);
+                    newStudent.firstName = FirstNameTextBoxS.Text;
+                    newStudent.lastName = LastNameTextBoxS.Text;
+                    if (!NonSubmissionCheckBox.IsChecked ?? false)
+                    {
+                        newStudent.componentOne = ComponentOneTextBoxG.Text;
+                        newStudent.componentTwo = ComponentTwoTextBoxG.Text;
+                        newStudent.componentThree = ComponentThreeTextBoxG.Text;
+                        newStudent.nonSubmission = false;
+                    }
+                    else
+                    {
+                        newStudent.componentOne = "";
+                        newStudent.componentTwo = "";
+                        newStudent.componentThree = "";
+                        newStudent.nonSubmission = true;
+                    }
+                    newStudent.finalGrade = FinalGradeTextBox.Text;
+
+                    studentEntities.Students.Add(newStudent);
+
+                    //Save change made to DB
+                    studentEntities.SaveChanges();
+                    //Refresh the listbox
+                    ((MainWindow)Owner).BindListBoxData();
+                    //Close secondary window
+                    Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    MessageBox.Show("Error while trying to add a Student to Database\nError Message: " + ex.Message +
+                                    "\nPlease try to run the application again.");
+                }
+                finally
+                {
+                    //Close the connection
+                    studentEntities.Database.Connection.Close();
+                }
             }
-            finally
+            else
             {
-                //Close the connection
-                studentEntities.Database.Connection.Close();
+                MessageBox.Show("Please verify your input, error:\n\n" + errorList);
             }
         }
 

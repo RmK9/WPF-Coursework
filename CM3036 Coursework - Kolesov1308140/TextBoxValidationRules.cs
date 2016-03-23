@@ -32,7 +32,6 @@ namespace CM3036_Coursework___Kolesov1308140
                     if ((string.IsNullOrEmpty(input) || input.Length != 2) && !IsNonSubmission) return new ValidationResult(false, "Please enter 2 Grades (A, B, C, D, E, F) exactly.");
                     break;
             }
-
             
             return new ValidationResult(true, null);
 
