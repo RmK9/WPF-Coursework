@@ -123,8 +123,7 @@ namespace CM3036_Coursework___Kolesov1308140
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    MessageBox.Show("Error while trying to add a Student to Database\nError Message: " + ex.Message +
-                                    "\nPlease try to run the application again.");
+                    MessageBox.Show("Error while trying to add a Student to Database\n\nError Message: " + ex.Message + "\n\nPlease try again.");
                 }
                 finally
                 {

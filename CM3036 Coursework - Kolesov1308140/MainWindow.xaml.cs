@@ -23,7 +23,10 @@ namespace CM3036_Coursework___Kolesov1308140
         public MainWindow()
         {
             InitializeComponent();
+        }
 
+        private void MainWindow_OnInitialized(object sender, EventArgs e)
+        {
             BindListBoxData();
 
             InputValidationHelper.AttachTextBoxInputEventHandlers(this);
@@ -31,7 +34,6 @@ namespace CM3036_Coursework___Kolesov1308140
 
         public void BindListBoxData()
         {
-            //Gets student list
             StudentsListBox.ItemsSource = GetStudentList();
         }
 
@@ -41,16 +43,25 @@ namespace CM3036_Coursework___Kolesov1308140
             {
                 //Force open the connection to try to tackle "Underlying provider failed to open" exception
                 _studentEntities.Database.Connection.Open();
-                if (PassedRadioButton.IsChecked ?? false) return _studentEntities.Students.Where(g => g.finalGrade != "E" && g.finalGrade != "F").AsEnumerable().Reverse().ToList();
-                if (FailedRadioButton.IsChecked ?? false) return _studentEntities.Students.Where(g => g.finalGrade == "E" || g.finalGrade == "F").AsEnumerable().Reverse().ToList();
+
+                var studentList = _studentEntities.Students.AsEnumerable().Reverse().ToList();
+
+                //Set PercentagePassedLabel to the percentage of students who passed the module
+                //Has to be checked for not being null since wpf decides to call OnInitialize twice
+                var gg = studentList.Count(s => s.finalGrade != "E" && s.finalGrade != "F") / (double)studentList.Count;
+                if (PercentagePassedLabel != null ) PercentagePassedLabel.Content = "(" + Math.Round((double)(studentList.Count(s => s.finalGrade != "E" && s.finalGrade != "F") / (double)studentList.Count * 100.0)) + "%)";
+        
                 //Gets the student list from DB in a reverse order to keep the records
                 //in the same order as in DB and keep oldest records at top
-                return _studentEntities.Students.AsEnumerable().Reverse().ToList();
+                if (PassedRadioButton.IsChecked ?? false) return studentList.Where(g => g.finalGrade != "E" && g.finalGrade != "F").ToList();
+                if (FailedRadioButton.IsChecked ?? false) return studentList.Where(g => g.finalGrade == "E" || g.finalGrade == "F").ToList();
+
+                return studentList;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to get Students from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
+                MessageBox.Show("Error while trying to get Students from Database\n\nError Message: " + ex.Message + "\n\nPlease try again.");
                 return new List<Student>();
             }
             finally
@@ -67,10 +78,11 @@ namespace CM3036_Coursework___Kolesov1308140
 
         private void ApplyChangesButton_OnClick(object sender, RoutedEventArgs e)
         {
+
+            var selectedStudent = GetSelectedStudent();
+
             try
             {
-                var selectedStudent = GetSelectedStudent();
-
                 //Early exit (do nothing) if no student selected
                 if (selectedStudent == null) return;
 
@@ -113,14 +125,14 @@ namespace CM3036_Coursework___Kolesov1308140
             {
                 Console.WriteLine(ex.Message);
                 MessageBox.Show(
-                    "Error while trying to save Student from Database\n\nPlease try again.\n\nError Message: " +
-                    ex.Message);
+                    "Error while trying to save Student from Database\n\nError Message: " + ex.Message + "\n\nPlease try again.");
             }
             finally
             {
                 _studentEntities.Database.Connection.Close();
-                //Unselect student in ListBox
+                //Refresh text boxes (in case non-submission was checked and grades were left in disabled textboxes)
                 StudentsListBox.UnselectAll();
+                StudentsListBox.SelectedItem = selectedStudent;
                 //Refresh ListBox data
                 BindListBoxData();
             }
@@ -142,7 +154,7 @@ namespace CM3036_Coursework___Kolesov1308140
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to remove Student from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
+                MessageBox.Show("Error while trying to remove Student from Database\n\nError Message: " + ex.Message + "\n\nPlease try again.");
             }
             finally
             {
@@ -166,7 +178,7 @@ namespace CM3036_Coursework___Kolesov1308140
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                MessageBox.Show("Error while trying to remove Student from Database\n\nPlease try again.\n\nError Message: " + ex.Message);
+                MessageBox.Show("Error while trying to remove Student from Database\n\nError Message: " + ex.Message + "\n\nPlease try again.");
             }
             finally
             {
